@@ -11,10 +11,8 @@ Unofficial PyTorch implementation of Google AI's:
 
 ### Audio Sample
 
-- [Target Audio](https://cdn.jsdelivr.net/gh/mindslab-ai/voicefilter/assets/target.wav)
-- [Input 1: Reference Audio](https://cdn.jsdelivr.net/gh/mindslab-ai/voicefilter/assets/ref-voice.wav)
-- [Input 2: Mixed Audio](https://cdn.jsdelivr.net/gh/mindslab-ai/voicefilter/assets/mixed.wav)
-- [Result: Estimated Audio](https://cdn.jsdelivr.net/gh/mindslab-ai/voicefilter/assets/estimated.waav)
+- Listen to audio sample at webpage: http://swpark.me/voicefilter/
+
 
 ### Metric
 
