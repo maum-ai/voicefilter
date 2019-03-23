@@ -50,5 +50,5 @@ embedder: # d-vector embedder. don't fix it!
   emb_dim: 256
   lstm_hidden: 768
   lstm_layers: 3
-  window: 160
-  stride: 80
+  window: 80
+  stride: 40
