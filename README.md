@@ -91,6 +91,7 @@ Unofficial PyTorch implementation of Google AI's:
     This model was trained with [VoxCeleb2](http://www.robots.ox.ac.uk/~vgg/data/voxceleb/vox2.html) dataset,
     where utterances are randomly fit to time length [70, 90] frames.
     Tests are done with window 80 / hop 40 and have shown equal error rate about 1%.
+    Data used for test were selected from first 8 speakers of [VoxCeleb1](http://www.robots.ox.ac.uk/~vgg/data/voxceleb/vox1.html) test dataset, where 10 utterances per each speakers are randomly selected.
     
     The model can be downloaded at [this GDrive link](https://drive.google.com/file/d/1YFmhmUok-W76JkrfA0fzQt3c-ZsfiwfL/view?usp=sharing).
 
