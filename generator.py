@@ -84,7 +84,7 @@ if __name__ == '__main__':
     parser.add_argument('-c', '--config', type=str, required=True,
                         help="yaml file for configuration")
     parser.add_argument('-d', '--libri_dir', type=str, default=None,
-                        help="Directory of LibriSpeech dataset, containing folders of train-clean-100, train-clean-360, train-other-500, dev-clean.")
+                        help="Directory of LibriSpeech dataset, containing folders of train-clean-100, train-clean-360, dev-clean.")
     parser.add_argument('-v', '--voxceleb_dir', type=str, default=None,
                         help="Directory of VoxCeleb2 dataset, ends with 'aac'")
     parser.add_argument('-o', '--out_dir', type=str, required=True,
@@ -110,9 +110,12 @@ if __name__ == '__main__':
         train_folders = [x for x in glob.glob(os.path.join(args.libri_dir, 'train-clean-100', '*'))
                             if os.path.isdir(x)] + \
                         [x for x in glob.glob(os.path.join(args.libri_dir, 'train-clean-360', '*'))
-                            if os.path.isdir(x)] + \
-                        [x for x in glob.glob(os.path.join(args.libri_dir, 'train-other-500', '*'))
                             if os.path.isdir(x)]
+                        # we recommned to exclude train-other-500
+                        # See https://github.com/mindslab-ai/voicefilter/issues/5#issuecomment-497746793
+                        # + \
+                        #[x for x in glob.glob(os.path.join(args.libri_dir, 'train-other-500', '*'))
+                        #    if os.path.isdir(x)]
         test_folders = [x for x in glob.glob(os.path.join(args.libri_dir, 'dev-clean', '*'))]
 
     elif args.voxceleb_dir is not None:
