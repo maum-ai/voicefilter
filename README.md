@@ -127,13 +127,7 @@ python inference.py -c [config yaml] -e [path of embedder pt file] --checkpoint_
 
 ## Possible improvments
 
-These are some of my personal opinions for improvement. If you have other ideas, don't hesitate to open issue.
-
-- Masks performed poorly on high-frequency channels.
-  - Training embedder system with linear-scale spectrogram instead of mel might improve this.
-- Replace zero-padding with [partial convolution](https://github.com/NVIDIA/partialconv).
-- Try power-law compressed reconstruction error as loss function, instead of MSE.
-    - Tried `power=0.3`, but failed. 
+- Try power-law compressed reconstruction error as loss function, instead of MSE. (See [#14](https://github.com/mindslab-ai/voicefilter/issues/14))
 
 ## Author
 
