@@ -6,3 +6,4 @@ librosa
 mir_eval
 matplotlib
 tensorboardX
+Pillow
