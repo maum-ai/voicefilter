@@ -2,8 +2,9 @@ tqdm
 numpy
 torch==1.0.1
 pyyaml
-librosa
+librosa==0.6.3
 mir_eval
 matplotlib
 tensorboardX
 Pillow
+numba==0.48
