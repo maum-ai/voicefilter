@@ -1,5 +1,47 @@
 # VoiceFilter
 
+## Note from Seung-won (2020.10.25)
+
+Hi everyone! It's Seung-won from MINDs Lab, Inc.
+It's been a long time since I've released this open-source,
+and I didn't expect this repository to grab such a great amount of attention for a long time.
+I would like to thank everyone for giving such attention, and also Mr. Quan Wang (the first author of the VoiceFilter paper) for referring this project in his paper.
+
+Actually, this project was done by me when it was only 3 months after I started studying deep learning & speech separation without a supervisor in the relevant field.
+Back then, I didn't know what is a power-law compression, and the correct way to validate/test the models.
+Now that I've spent more time on deep learning & speech since then (I also wrote a paper published at [Interspeech 2020](https://arxiv.org/abs/2005.03295) 😊),
+I can observe some obvious mistakes that I've made.
+Those issues were kindly raised by GitHub users; please refer to the
+[Issues](https://github.com/mindslab-ai/voicefilter/issues?q=is%3Aissue+) and [Pull Requests](https://github.com/mindslab-ai/voicefilter/pulls) for that.
+That being said, this repository can be quite unreliable,
+and I would like to remind everyone to use this code at their own risk (as specified in LICENSE).
+
+Unfortunately, I can't afford extra time on revising this project or reviewing the Issues / Pull Requests.
+Instead, I would like to offer some pointers to newer, more reliable resources:
+
+- [VoiceFilter-Lite](https://arxiv.org/abs/2009.04323):
+This is a newer version of VoiceFilter presented at Interspeech 2020, which is also written by Mr. Quan Wang (and his colleagues at Google).
+I highly recommend checking this paper, since it focused on a more realistic situation where VoiceFilter is needed.
+- [List of VoiceFilter implementation available on GitHub](https://paperswithcode.com/paper/voicefilter-targeted-voice-separation-by):
+In March 2019, this repository was the only available open-source implementation of VoiceFilter.
+However, much better implementations that deserve more attention became available across GitHub.
+Please check them, and choose the one that meets your demand.
+- [PyTorch Lightning](https://www.pytorchlightning.ai/):
+Back in 2019, I could not find a great deep-learning project template for myself,
+so I and my colleagues had used this project as a template for other new projects.
+(This project had also inspired [ryul99/pytorch-project-template](https://github.com/ryul99/pytorch-project-template), which supports CI and wandb logging.)
+For people who are searching for such project template, I would like to strongly recommend PyTorch Lightning.
+Even though I had done a lot of effort into developing my own template during 2019
+([VoiceFilter](https://github.com/mindslab-ai/voicefilter) -> [RandWireNN](https://github.com/seungwonpark/RandWireNN)
+-> [MelNet](https://github.com/Deepest-Project/MelNet) -> [MelGAN](https://github.com/seungwonpark/melgan)),
+I found PyTorch Lightning much better than my own template.
+
+Thanks for reading, and I wish everyone good health during the global pandemic situation.
+
+Best regards, Seung-won Park
+
+---
+
 Unofficial PyTorch implementation of Google AI's:
 [VoiceFilter: Targeted Voice Separation by Speaker-Conditioned Spectrogram Masking](https://arxiv.org/abs/1810.04826).
 
