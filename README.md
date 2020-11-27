@@ -29,7 +29,6 @@ Please check them, and choose the one that meets your demand.
 - [PyTorch Lightning](https://www.pytorchlightning.ai/):
 Back in 2019, I could not find a great deep-learning project template for myself,
 so I and my colleagues had used this project as a template for other new projects.
-(This project had also inspired [ryul99/pytorch-project-template](https://github.com/ryul99/pytorch-project-template), which supports CI and wandb logging.)
 For people who are searching for such project template, I would like to strongly recommend PyTorch Lightning.
 Even though I had done a lot of effort into developing my own template during 2019
 ([VoiceFilter](https://github.com/mindslab-ai/voicefilter) -> [RandWireNN](https://github.com/seungwonpark/RandWireNN)
