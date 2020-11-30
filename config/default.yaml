@@ -39,6 +39,7 @@ train:
     final: 0.05
   summary_interval: 1
   checkpoint_interval: 1000
+  complex_loss_ratio: 0.1  # the lambda in power-law compression loss computation
 ---
 log:
   chkpt_dir: 'chkpt'
