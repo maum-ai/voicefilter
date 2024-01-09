@@ -1,0 +1,54 @@
+audio:
+  n_fft: 1200
+  num_freq: 601 # n_fft//2 + 1
+  sample_rate: 16000
+  hop_length: 160
+  win_length: 400
+  min_level_db: -100.0
+  ref_level_db: 20.0
+  preemphasis: 0.97
+  power: 0.30
+---
+model:
+  lstm_dim: 400
+  fc1_dim: 600
+  fc2_dim: 601 # num_freq
+---
+data:
+  train_dir: ''
+  test_dir: ''
+  audio_len: 3.0
+---
+form:
+  input: '*-norm.wav'
+  dvec: '*-dvec.txt' # will be calculated on-the-fly
+  target:
+    wav: '*-target.wav'
+    mag: '*-target.pt'
+  mixed:
+    wav: '*-mixed.wav'
+    mag: '*-mixed.pt'
+---
+train:
+  batch_size: 8
+  num_workers: 16
+  optimizer: 'adam'
+  adam: 0.001
+  adabound:
+    initial: 0.001
+    final: 0.05
+  summary_interval: 1
+  checkpoint_interval: 1000
+---
+log:
+  chkpt_dir: 'chkpt'
+  log_dir: 'logs'
+---
+embedder: # d-vector embedder. don't fix it!
+  num_mels: 40
+  n_fft: 512
+  emb_dim: 256
+  lstm_hidden: 768
+  lstm_layers: 3
+  window: 80
+  stride: 40
