@@ -135,6 +135,7 @@ if __name__ == '__main__':
     audio = Audio(hp)
 
     def train_wrapper(num):
+        print("train_spk: ",len(train_spk))
         spk1, spk2 = random.sample(train_spk, 2)
         s1_dvec, s1_target = random.sample(spk1, 2)
         s2 = random.choice(spk2)
