@@ -124,12 +124,24 @@ if __name__ == '__main__':
         train_folders = all_folders[:-20]
         test_folders = all_folders[-20:]
 
-    train_spk = [glob.glob(os.path.join(spk, '**', hp.form.input), recursive=True)
-                    for spk in train_folders]
+    train_spk = []
+    for folder in train_folders:
+        for subdir, _, files in os.walk(folder):
+            for file in files:
+              if os.path.splitext(file)[1].lower() == '.wav':
+                train_spk.append(os.path.join(subdir, file))
+    #train_spk = [glob.glob(os.path.join(spk, '**', hp.form.input), recursive=True)
+    #                for spk in train_folders]
     train_spk = [x for x in train_spk if len(x) >= 2]
 
-    test_spk = [glob.glob(os.path.join(spk, '**', hp.form.input), recursive=True)
-                    for spk in test_folders]
+    test_spk = []
+    for folder in test_folders:
+        for subdir, _, files in os.walk(folder):
+            for file in files:
+              if os.path.splitext(file)[1].lower() == '.wav':
+                test_spk.append(os.path.join(subdir, file))
+    #test_spk = [glob.glob(os.path.join(spk, '**', hp.form.input), recursive=True)
+    #                for spk in test_folders]
     test_spk = [x for x in test_spk if len(x) >= 2]
 
     audio = Audio(hp)
