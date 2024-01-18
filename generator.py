@@ -7,6 +7,7 @@ import librosa
 import argparse
 import numpy as np
 from multiprocessing import Pool, cpu_count
+import soundfile as sf # 추가
 
 from utils.audio import Audio
 from utils.hparams import HParam
@@ -27,9 +28,9 @@ def mix(hp, args, audio, num, s1_dvec, s1_target, s2, train):
     srate = hp.audio.sample_rate
     dir_ = os.path.join(args.out_dir, 'train' if train else 'test')
 
-    d, _ = librosa.load(s1_dvec, sr=srate)
-    w1, _ = librosa.load(s1_target, sr=srate)
-    w2, _ = librosa.load(s2, sr=srate)
+    d, srate = sf.read(s1_dvec)  # soundfile로 수정
+    w1, _ = sf.read(s1_target)   #
+    w2, _ = sf.read(s2)          #
     assert len(d.shape) == len(w1.shape) == len(w2.shape) == 1, \
         'wav files must be mono, not stereo'
 
@@ -62,8 +63,8 @@ def mix(hp, args, audio, num, s1_dvec, s1_target, s2, train):
     # save vad & normalized wav files
     target_wav_path = formatter(dir_, hp.form.target.wav, num)
     mixed_wav_path = formatter(dir_, hp.form.mixed.wav, num)
-    librosa.output.write_wav(target_wav_path, w1, srate)
-    librosa.output.write_wav(mixed_wav_path, mixed, srate)
+    sf.write(target_wav_path, w1, srate) # librosa.output.write_wav(target_wav_path, w1, srate) 수정
+    sf.write(mixed_wav_path, mixed, srate) # librosa.output.write_wav(mixed_wav_path, mixed, srate)
 
     # save magnitude spectrograms
     target_mag, _ = audio.wav2spec(w1)
@@ -148,14 +149,22 @@ if __name__ == '__main__':
 
     def train_wrapper(num):
         spk1, spk2 = random.sample(train_spk, 2)
-        s1_dvec, s1_target = random.sample(spk1, 2)
-        s2 = random.choice(spk2)
+        spk1_dir = os.path.dirname(spk1) # my code
+        file_spk1 = [os.path.join(spk1_dir, file) for file in os.listdir(spk1_dir) if file.endswith(".wav")] # my code
+        
+        s1_dvec, s1_target = random.sample(file_spk1, 2) # spk1 수정
+        s2 = spk2
+
         mix(hp, args, audio, num, s1_dvec, s1_target, s2, train=True)
 
     def test_wrapper(num):
         spk1, spk2 = random.sample(test_spk, 2)
-        s1_dvec, s1_target = random.sample(spk1, 2)
-        s2 = random.choice(spk2)
+        spk1_dir = os.path.dirname(spk1) # my code
+        file_spk1 = [os.path.join(spk1_dir, file) for file in os.listdir(spk1_dir) if file.endswith(".wav")] # my code
+        
+        s1_dvec, s1_target = random.sample(file_spk1, 2)
+        s2 = spk2
+
         mix(hp, args, audio, num, s1_dvec, s1_target, s2, train=False)
 
     arr = list(range(10**5))
