@@ -153,7 +153,7 @@ if __name__ == '__main__':
         file_spk1 = [os.path.join(spk1_dir, file) for file in os.listdir(spk1_dir) if file.endswith(".wav")] # my code
         
         s1_dvec, s1_target = random.sample(file_spk1, 2) # spk1 수정
-        s2 = spk2
+        s2 = os.path.dirname(spk2)
 
         mix(hp, args, audio, num, s1_dvec, s1_target, s2, train=True)
 
@@ -163,7 +163,7 @@ if __name__ == '__main__':
         file_spk1 = [os.path.join(spk1_dir, file) for file in os.listdir(spk1_dir) if file.endswith(".wav")] # my code
         
         s1_dvec, s1_target = random.sample(file_spk1, 2)
-        s2 = spk2
+        s2 = os.path.dirname(spk2)
 
         mix(hp, args, audio, num, s1_dvec, s1_target, s2, train=False)
 
