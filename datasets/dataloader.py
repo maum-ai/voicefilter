@@ -14,6 +14,11 @@ def create_dataloader(hp, args, train):
         mixed_mag_list = list()
 
         for dvec_mel, target_mag, mixed_mag in batch:
+            # Convert to float32  <- 여기서 부터 추가
+            dvec_mel = dvec_mel.to(torch.float32)
+            target_mag = target_mag.to(torch.float32)
+            mixed_mag = mixed_mag.to(torch.float32)
+            # -------------------------------------- 여기까지
             dvec_list.append(dvec_mel)
             target_mag_list.append(target_mag)
             mixed_mag_list.append(mixed_mag)
