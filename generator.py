@@ -167,10 +167,10 @@ if __name__ == '__main__':
 
         mix(hp, args, audio, num, s1_dvec, s1_target, s2, train=False)
 
-    arr = list(range(10**5))
+    arr = list(range(10))
     with Pool(cpu_num) as p:
         r = list(tqdm.tqdm(p.imap(train_wrapper, arr), total=len(arr)))
 
-    arr = list(range(10**2))
+    arr = list(range(5))
     with Pool(cpu_num) as p:
         r = list(tqdm.tqdm(p.imap(test_wrapper, arr), total=len(arr)))
