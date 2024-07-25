@@ -1,6 +1,6 @@
 tqdm
 numpy
-torch==1.0.1
+torch==2.2.0
 pyyaml
 librosa
 mir_eval
